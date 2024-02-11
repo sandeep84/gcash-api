@@ -3,3 +3,4 @@ fastapi
 python-jose[cryptography]
 passlib[bcrypt]
 uvicorn[standard]
+piecash
