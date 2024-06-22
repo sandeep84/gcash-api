@@ -1,0 +1,285 @@
+#;This is a rules file for the fiximports script.
+#;Lines beginning with a '#' are ignored. Blank lines are also ignored.
+#;Each entry is in the format:
+#;Account Pattern
+#;Where Account is a colon(:) separated account path.
+#;Format is a search pattern. Example:
+#;Expenses:Dining PIZZA
+#;Specifies that a transaction beginning with "PIZZA" sould go into the
+#;"Expenses:Dining" account. Currently account names cannot have spaces in them.
+#;(Uncomment the line below to activate this rule)
+
+Assets:UK:Banks:Sandeep:Lloyds Bank;45237260_
+Assets:UK:Banks:Sandeep:Revolut;Revolut-GBP-Statement.*\.csv
+Assets:UK:Banks:Shuchita:Lloyds Bank;75328063_
+Assets:India:Banks:Shuchita:Union bank;OpTransactionHistoryUX3_XLS.*\.xls
+Assets:India:Banks:Sandeep:ICICI NRO account;OpTransactionHistory.*\.csv
+Liabilities:BA Amex Credit Card;activity.*\.csv
+Liabilities:Thinkmoney credit card;transactions-.*\.csv
+Liabilities:Amazon Newday card;transactions[ \(\)0-9]*\.csv
+Liabilities:BarclaysCard;statement_.*\.qif
+
+Assets:UK:Banks:Anya Pocket;To Anya
+Assets:UK:Banks:Anya Pocket;From Anya
+
+IGNORE;PAYMENT RECEIVED - THANK YOU
+IGNORE;S VANGIPURAM
+IGNORE;DIRECT DEBIT PAYMENT - THANK YOU
+IGNORE;Payment By Direct Debit
+IGNORE;Deposit for Investment Purchases
+IGNORE;Deposit for investment purchases
+IGNORE;Regular Deposit
+IGNORE;Account fee cleared
+
+Expenses:Dining;Sandwi
+Expenses:Dining;FOSTERS
+Expenses:Dining;TooGoodToG
+Expenses:Dining;Toogoodtog
+Expenses:Dining;JUST EAT.CO.UK
+Expenses:Dining;ELIOR
+Expenses:Dining;BRADLEY STOKE LEIS
+Expenses:Dining;LA GROTTA
+Expenses:Dining;WRIGGLE
+Expenses:Dining;INN ON THE GREEN
+Expenses:Dining;FOOD
+Expenses:Dining;DANGUN
+Expenses:Dining;LOUNGE
+Expenses:Dining;AUNTIE ANNE'S
+Expenses:Dining;BEAUFORT ARMS
+Expenses:Dining;BELLA ITALIA
+Expenses:Dining;BOSTON TEA
+Expenses:Dining;BRISTOL SWEET MART
+Expenses:Dining;BROZEN
+Expenses:Dining;BURGER
+Expenses:Dining;CAFE
+Expenses:Dining;Coffi
+Expenses:Dining;CAFFE
+Expenses:Dining;BLAISE CASTLE
+Expenses:Dining;CHOPSTIX
+Expenses:Dining;COFFEE
+Expenses:Dining;STARBUCKS
+Expenses:Dining;COSTA
+Expenses:Dining;CUPP
+Expenses:Dining;EL MEXICANA
+Expenses:Dining;Friska
+Expenses:Dining;GREGGS
+Expenses:Dining;HOLE IN THE WALL
+Expenses:Dining;ICE CREAM
+Expenses:Dining;IZ *Friska Ltd
+Expenses:Dining;Gopal?s Curry
+Expenses:Dining;ATHENIAN
+Expenses:Dining;KFC
+Expenses:Dining;MCDONALD
+Expenses:Dining;McDonalds
+Expenses:Dining;Dominos
+Expenses:Dining;Subway
+Expenses:Dining;NANDOS
+Expenses:Dining;PHO BRISTOL
+Expenses:Dining;PIE MINISTER
+Expenses:Dining;PIZZA EXPRESS
+Expenses:Dining;PRET A MANGER
+Expenses:Dining;PREZZO
+Expenses:Dining;SANDWI
+Expenses:Dining;SEDGWICKS
+Expenses:Dining;SMART FISH BAR
+Expenses:Dining;SOHO
+Expenses:Dining;SPUDULIKE
+Expenses:Dining;SQUEEZED
+Expenses:Dining;SUBWAY
+Expenses:Dining;SUSHI
+Expenses:Dining;THALI
+Expenses:Dining;THE ASSEMBLY
+Expenses:Dining;TOOGOODTOGO
+Expenses:Dining;WATERSTONES
+Expenses:Dining;JUSTEAT
+Expenses:Dining;Cafe2U
+Expenses:Dining;CAFE2U
+
+Expenses:Anya:Lessons;2ND STOKE LODGE BR
+Expenses:Anya:School;St Michaels Cevc
+Expenses:Anya:School;JUST CHILDCARE
+Expenses:Anya:School;ABBEYWOOD TOTS
+Expenses:Anya:School;SCHOOL GATEWAY
+Expenses:Anya:School;PLAY HOUSE
+
+Expenses:Entertainment:Music/Movies;Prime Video
+
+Expenses:Shopping;JOHN LEWIS
+Expenses:Shopping;Paypal
+Expenses:Shopping;AMAZON.CO.UK
+Expenses:Shopping;AMZN
+Expenses:Shopping;Amazon
+Expenses:Shopping;POUNDLAND
+Expenses:Shopping;POUNDWORLD
+Expenses:Shopping;POUNDSTRETCHER
+
+Expenses:Entertainment:Music/Movies;PRIME VIDEO
+Expenses:Entertainment:Music/Movies;Vue Cinemas
+Expenses:Entertainment:Music/Movies;VUE BSL LTD
+Expenses:Entertainment:Music/Movies;NETFLIX.COM
+Expenses:Entertainment:Music/Movies;Kindle
+Expenses:Entertainment:Music/Movies;TVLICENSING
+Expenses:Entertainment:Music/Movies;nowtv
+Expenses:Entertainment:Music/Movies;GOOGLE *Google Pla
+
+Income:Sandeep:UK:Salary;INFINEON
+Income:Shuchita:UK:Salary;XMOS
+
+Expenses:Groceries;Edeka
+Expenses:Groceries;Eden General Stores
+Expenses:Groceries;TESCO
+Expenses:Groceries;Tesco Stores
+Expenses:Groceries;ICELAND
+Expenses:Groceries;TESCO-STORE
+Expenses:Groceries;ASDA
+Expenses:Groceries;SAINSBURY
+Expenses:Groceries;LIDL
+Expenses:Groceries;ALDI
+Expenses:Groceries;BRISTOL HATCHET RD AVON
+Expenses:Groceries;MERCHANT NEWS
+Expenses:Groceries;MERCHANTS NEWS
+Expenses:Groceries;CO-OP
+Expenses:Groceries;BOOTS
+Expenses:Groceries;EDEN GENERAL STORE
+Expenses:Groceries;WH SMITH
+Expenses:Groceries;WHSMITH
+Expenses:Groceries;MCOLLS
+Expenses:Groceries;WAITROSE
+Expenses:Groceries;DESICART
+Expenses:Groceries;RIVERFORD
+Expenses:Groceries;riverford.co.uk
+
+Expenses:Transport;GWR
+Expenses:Transport;Uber
+Expenses:Transport;First Aberdeen Coach Hire
+Expenses:Transport;STGCOACH/CTYLINK
+Expenses:Transport;STAGECOACH
+Expenses:Transport;FIRST BUS
+Expenses:Transport;LOTHIAN BUSES
+Expenses:Transport;TFL TRAVEL
+Expenses:Transport;Transport for London
+Expenses:Transport;First West
+Expenses:Transport;FIRST WEST OF ENGL
+Expenses:Transport;NATIONAL EXPRESS
+
+Expenses:Travel;EXPEDIA
+Expenses:Travel;OPODO
+Expenses:Travel;UNITED AIR
+Expenses:Travel;VISA
+Expenses:Travel;Sncf
+Expenses:Travel;Gare d'Aix-en-Provence TGV
+Expenses:Travel;Société de la Tour Eiffel
+
+Expenses:Books;BOOK
+Expenses:Books;KINDLE
+
+Expenses:Charity;STROKE ASSOCIATION
+Expenses:Charity;JUSTGIVING
+
+Expenses:Rent;COUNTYWIDE RESIDEN
+Expenses:Utilities:Council Tax;SGC
+Expenses:Utilities:Council Tax;BRISTOL CITY COUNC
+Expenses:Utilities:Broadband;VIRGIN MEDIA PYMTS
+Expenses:Utilities:Broadband;TALKTALK LIMITED
+Expenses:Utilities:Electric;OCTOPUS
+Expenses:Utilities:Electric;SPARK ENERGY
+Expenses:Utilities:Electric;SPARKENERGY
+Expenses:Utilities:Electric;SSE SOUTHERN
+Expenses:Utilities:Electric;BULB ENERGY
+Expenses:Utilities:Water;BRISTOLWESSEXWATER
+Expenses:Utilities:Water;WWW.WESSEXWATER.CO
+Expenses:Utilities:Mobile;EE & T-MOBILE
+Expenses:Utilities:Mobile;EE LIMITED
+Expenses:Utilities:Mobile;TESCO MOBILE
+Expenses:Utilities:Mobile;Lebara
+Expenses:Utilities:Mobile;LEBARA
+Expenses:Utilities:Mobile;O2
+
+Expenses:Medical Expenses;DENTIST
+Expenses:Medical Expenses;JHOOTS
+Expenses:Medical Expenses;HOLLAND & BARRETT
+
+Expenses:Clothes;SHOE
+Expenses:Clothes;H&M
+Expenses:Clothes;MATALAN
+Expenses:Clothes;MADISON-RAE
+
+Expenses:Auto;DSA THEORY TEST
+Expenses:Auto:Petrol;TESCO PAYAT PUMP
+Expenses:Auto:Parking;CITY CENTRE SPH
+Expenses:Auto:Parking;NCP LIMITED
+Expenses:Auto:Parking;CARDIFF COUNCIL PA
+Expenses:Auto:Parking;CABOT CIRCUS CAR P
+Expenses:Auto:Parking;APCOA
+Expenses:Auto:Fees;P J HAYWARD
+
+Expenses:Insurance:Life Insurance;ROYAL LONDON
+Expenses:India:Insurance;LIC
+Expenses:India:Insurance;LIFE INSURANCE
+Expenses:India:Insurance;TATA AIA
+Expenses:India:Insurance;NATIONAL INSURANCE COMPANY
+Expenses:India:Elegance Golf View:Electricity bill; Bangalore Electricity
+Expenses:India:Elegance Golf View:Electricity bill;BIL/BPAY/0000000A6XOP/BBPS/Bangalore /116214
+
+Expenses:Bank Service Charge;^Account Fee for the period
+Expenses:Bank Service Charge;CLUB LLOYDS
+Income:Interest Income:Checking Interest;INTEREST
+
+Expenses:India:Bank service charge; SMS Charges for
+
+Liabilities:Halifax Mortgage;HALIFAX
+
+Expenses:Home Improvement;RANGE
+Expenses:Home Improvement;IKEA
+Expenses:Home Improvement;ARGOS
+Expenses:Home Improvement;B&M RETAIL
+
+Expenses:Hobbies;YOGA
+Expenses:Hobbies;NATIONAL TRUST
+Expenses:Hobbies;WE THE CURIOUS
+Expenses:Hobbies;WWW.BRISTOLZOO.ORG
+Expenses:Hobbies;BARNARDOS
+
+Expenses:Clothes;W J HAIR & BEAUTY
+Expenses:Clothes;MARKS & SPENCER
+Expenses:Clothes;MARKS&SPENCER
+
+Expenses:Anya:Breakfast Club;SCHOOLGATEWA*ST MI
+Expenses:Anya:Lessons;CIRCADIAN TRUST
+Expenses:Anya:Lessons;WINGFIELD
+Expenses:Anya:Lessons;DANCEWELL
+Expenses:Anya:Lessons;IGNITE
+Expenses:Anya:Lessons;V ARMSTRONG
+Expenses:Anya:Lessons;BALLET CLASS
+Expenses:Anya:Lessons;K WILLIAMSON
+Expenses:Anya:Lessons;KATE WILLIAMSON
+Expenses:Anya:Lessons;MRS N J OLLERENSHA
+Expenses:Anya:Lessons;FROMESIDE
+Expenses:Anya:Lessons;West of England Music, Bristol
+Expenses:Anya:Lessons;THESTEMFAC
+Expenses:Anya:Misc;CARD FACTORY
+Expenses:Anya:Misc;iTunes
+Expenses:Anya:Misc;ST MICHAELS PTFA
+
+Liabilities:BA Amex Credit Card;AMERICAN EXPRESS
+Liabilities:BA Amex Credit Card;AMERICANEXPRES
+Liabilities:Thinkmoney credit card;CAPITAL ONE
+Liabilities:Amazon Newday card;AMAZON CARDS
+Liabilities:BarclaysCard;B/CARD AVIOS
+Expenses:Miscellaneous;MYCASHPLUS.CO.UK
+
+Expenses:Bank Service Charge;NON-GBP
+
+Expenses:Infineon:Travel;Derag
+Expenses:Infineon:Travel;Bayerischer Hof
+Expenses:Infineon:Travel;Db Automaten
+Expenses:Infineon:Travel;Db Bahn Automaten
+Expenses:Infineon:Travel;Munich International Airport
+Expenses:Infineon:Travel;Am Campeon
+
+Income:India Income:Sandeep:Rent:Elegance Golf View;CORPORATION BANK CHQ DEPOSIT
+Income:India Income:Joint:Rent:Rohan Avriti;JEOFFER J V
+Expenses:India:Mobile;Airtel Mobile
+Expenses:India:Mobile;BHARTI AIRTEL SERVICES
+Expenses:India:Taxes;TAX DEDUCTION AT SOURCE Tax Deduction
+Expenses:India:Rohan Avriti:Maintenance;NOBROKER TECHNOLOGI
