@@ -4,6 +4,13 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
+
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.decorator import cache
+
+from redis import asyncio as aioredis
+
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
@@ -43,15 +50,25 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:8080",
+    "http://localhost:58666",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@cache()
+async def get_cache():
+    return 1
+
+@app.on_event("startup")
+async def startup():
+   redis = aioredis.from_url("redis://localhost", encoding="utf8", decode_responses=True)
+   FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
@@ -133,12 +150,14 @@ async def login_for_access_token(
     return Token(access_token=access_token, token_type="bearer")
 
 @app.get("/accounts")
+@cache()
 def read_accounts(
     current_user: Annotated[User, Depends(get_current_active_user)]
 ):
     return accountManager.getAccounts(current_user.account_url)
 
 @app.get("/accounts/by_name/{account_name}")
+@cache()
 def read_accounts_by_name(
     current_user: Annotated[User, Depends(get_current_active_user)],
     account_name: str = None
@@ -146,6 +165,7 @@ def read_accounts_by_name(
     return accountManager.getAccount(current_user.account_url, name=account_name)
 
 @app.get("/accounts/by_guid/{account_guid}")
+@cache()
 def read_accounts_by_guid(
     current_user: Annotated[User, Depends(get_current_active_user)],
     account_guid: str = None

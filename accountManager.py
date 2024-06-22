@@ -4,6 +4,9 @@ def populateAccountChildrenRecords(account, rootCurrency):
     account_entry = {
         "guid": account.guid,
         "name": account.name,
+        "currency": account.commodity.mnemonic,
+        "balance": 0.0,
+        "balanceGBP": 0.0,
         "numChildren": len(account.children),
         "children": list()
     }
@@ -30,7 +33,7 @@ def populateAccountChildrenRecords(account, rootCurrency):
     return account_entry
 
 def getAccounts(account_url):
-    book = piecash.open_book(account_url, readonly=True)
+    book = piecash.open_book(uri_conn=account_url, readonly=True)
     root = book.root_account
     rootCurrency = book.currencies[0]
     accounts = populateAccountChildrenRecords(root, rootCurrency)
@@ -38,7 +41,7 @@ def getAccounts(account_url):
     return accounts
 
 def getAccount(account_url, **kwargs):
-    book = piecash.open_book(account_url, readonly=True)
+    book = piecash.open_book(uri_conn=account_url, readonly=True)
     root = book.root_account
     rootCurrency = book.currencies[0]
     account = populateAccountChildrenRecords(book.get(piecash.Account, **kwargs), rootCurrency)
