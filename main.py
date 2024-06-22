@@ -17,6 +17,7 @@ from pydantic import BaseModel
 
 import json
 import accountManager
+from go_cardless import GoCardlessClient
 
 with open("secrets.json", "r") as f:
     secrets = json.loads(f.read())
@@ -154,7 +155,7 @@ async def login_for_access_token(
 def read_accounts(
     current_user: Annotated[User, Depends(get_current_active_user)]
 ):
-    return accountManager.getAccounts(current_user.account_url)
+    return accountManager.getAccountRecords(current_user.account_url)
 
 @app.get("/accounts/by_name/{account_name}")
 @cache()
@@ -162,7 +163,7 @@ def read_accounts_by_name(
     current_user: Annotated[User, Depends(get_current_active_user)],
     account_name: str = None
 ):
-    return accountManager.getAccount(current_user.account_url, name=account_name)
+    return accountManager.getAccountRecord(current_user.account_url, name=account_name)
 
 @app.get("/accounts/by_guid/{account_guid}")
 @cache()
@@ -170,7 +171,19 @@ def read_accounts_by_guid(
     current_user: Annotated[User, Depends(get_current_active_user)],
     account_guid: str = None
 ):
-    return accountManager.getAccount(current_user.account_url, guid=account_guid)
+    return accountManager.getAccountRecord(current_user.account_url, guid=account_guid)
+
+@app.get("/accounts/update")
+def update_accounts(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+):
+    client = GoCardlessClient(current_user.account_url)
+    client.update_accounts()
+
+    FastAPICache.clear()
+
+    return {"status": "OK"}
+
 
 @app.on_event("shutdown")
 async def shutdown_event():

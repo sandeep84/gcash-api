@@ -4,13 +4,15 @@ from nordigen import NordigenClient
 import json
 from account_entry import AccountEntry
 import dateutil.parser
-import gnc_import
+import accountManager
 from decimal import Decimal
 
 class GoCardlessClient:
-    def __init__(self):
+    def __init__(self, account_url):
+        self.account_url = account_url
+
         self.__secrets = self.read_secrets()
-        self.rules = gnc_import.readrules('rules.txt')
+        self.rules = accountManager.readRules('rules.txt')
 
         self.client = NordigenClient(
             secret_id=self.__secrets['nordigen_secret_id'],
@@ -116,8 +118,8 @@ class GoCardlessClient:
 
             items.append(item)
 
-        gnc_import.write_transactions_to_gnucash(
-            self.__secrets["account_url"],
+        accountManager.writeTransactions(
+            self.account_url,
             'GBP',
             items,
             account_name,
