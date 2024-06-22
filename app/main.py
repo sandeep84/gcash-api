@@ -16,11 +16,10 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 
 import json
-import accountManager
-from go_cardless import GoCardlessClient
+from app import accountManager
+from app.go_cardless import GoCardlessClient
 
-with open("secrets.json", "r") as f:
-    secrets = json.loads(f.read())
+secrets = accountManager.readSecrets()
 
 class Token(BaseModel):
     access_token: str
@@ -47,12 +46,6 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app = FastAPI()
-
-origins = [
-    "http://localhost",
-    "http://localhost:8080",
-    "http://localhost:58666",
-]
 
 app.add_middleware(
     CORSMiddleware,

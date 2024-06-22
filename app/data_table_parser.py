@@ -1,7 +1,7 @@
 import re
 from decimal import Decimal
 import dateutil.parser
-from account_entry import AccountEntry
+from app.account_entry import AccountEntry
 import logging
 
 import csv

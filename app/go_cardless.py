@@ -2,17 +2,23 @@ from requests import HTTPError
 from uuid import uuid4
 from nordigen import NordigenClient
 import json
-from account_entry import AccountEntry
 import dateutil.parser
-import accountManager
 from decimal import Decimal
+import os.path
+
+from app.account_entry import AccountEntry
+import app.accountManager
 
 class GoCardlessClient:
     def __init__(self, account_url):
         self.account_url = account_url
 
-        self.__secrets = self.read_secrets()
-        self.rules = accountManager.readRules('rules.txt')
+        self.__secrets = app.accountManager.readSecrets()
+
+        if os.path.isfile('rules.txt'):
+            self.rules = app.accountManager.readRules('rules.txt')
+        elif os.path.isfile('/data/rules.txt'):
+            self.rules = app.accountManager.readRules('/data/rules.txt')
 
         self.client = NordigenClient(
             secret_id=self.__secrets['nordigen_secret_id'],
@@ -20,10 +26,6 @@ class GoCardlessClient:
         )
         self.client.token = self.__secrets['nordigen_client_token']
 
-
-    def read_secrets(self):
-        with open("secrets.json", "r") as f:
-            return json.loads(f.read())
 
 
     def write_secrets(self):
@@ -118,7 +120,7 @@ class GoCardlessClient:
 
             items.append(item)
 
-        accountManager.writeTransactions(
+        app.accountManager.writeTransactions(
             self.account_url,
             'GBP',
             items,

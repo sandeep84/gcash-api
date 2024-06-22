@@ -13,7 +13,7 @@ Original source from http://code.activestate.com/recipes/306103-quicken-qif-file
 import sys
 import datetime
 from decimal import Decimal
-from account_entry import AccountEntry
+from app.account_entry import AccountEntry
 
 class QIFParser:
     def __init__(self, filename) -> None:

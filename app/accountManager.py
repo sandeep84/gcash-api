@@ -1,11 +1,22 @@
 import argparse
 import datetime
+import json
 import logging
+import os
 import re
-from qif_parser import QIFParser
-from data_table_parser import XLSParser, XLSXParser, HTMLParser, CSVParser, JSONParser
+from app.qif_parser import QIFParser
+from app.data_table_parser import XLSParser, XLSXParser, HTMLParser, CSVParser, JSONParser
 
 import piecash
+
+def readSecrets():
+    if os.path.isfile('secrets.json'):
+        with open("secrets.json", "r") as f:
+            return json.loads(f.read())
+    elif os.path.isfile('/data/secrets.json'):
+        with open("/data/secrets.json", "r") as f:
+            return json.loads(f.read())
+
 
 def populateAccountChildrenRecords(account, rootCurrency):
     account_entry = {
